@@ -2,7 +2,7 @@
 ### Home automation with Node.JS
 
 
-![] (http://i.giphy.com/13iYERGkiczl5e.gif)
+![](http://i.giphy.com/13iYERGkiczl5e.gif)
 
 
 ##Introduction 
@@ -10,15 +10,16 @@
 
 -----
 ###User Story
-The user will be able to press a button and the lightbulb will turn on or off. 
+The user will be able to press the lightbulb button, which will send a signal to the server on how much output will be passed through the R3 Uno board and turn the it on or off.
 
 
 -----
 
 ### Technologies Used 
-Using Aurdino Uno R3 board to send voltage outputs which data will be sent to and from the Node.Js server running on rasberry Pi 3. All the requests will come from HTTP requests.  
+Using Uno R3 board to send voltage outputs which data will be sent to and from the Node.Js server running on rasberry Pi 3 will send voltage to the bulb to turn off or on. All the requests will be sent via HTTP requests.  
 
-The backend will be handled all by Node.JS
+The backend will be handled by a  Node.JS server and with socket.io, express and serialport as its dependencies.
+
 
 ### Routes
 
