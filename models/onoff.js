@@ -1,3 +1,4 @@
+'use strict '
 const gpio = require("rpi-gpio")
 
 // module.exports = {

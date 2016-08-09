@@ -1,3 +1,5 @@
+'use strict'
+
 console.log("ALl gears loaded!")
 $(".on").on("click", function() {
       console.log("on btn clicked")
