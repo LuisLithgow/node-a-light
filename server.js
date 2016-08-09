@@ -131,12 +131,18 @@ app.get('/off', function(req,res) {
 
 
 
-// ******FOR RPI-GPIO******
+// ******FOR GPIO******
 
-var pin = 11;
+var gpio = require("gpio");
+var gpio22, gpio4, intervalTimer;
 
-gpio.setup(pin, gpio.OUT, function() {
-  gpio.write(pin, true, function(err) {
-    if (err) throw err;
-  });
+// Flashing lights if LED connected to GPIO22
+gpio22 = gpio.export(22, {
+   ready: function() {
+      intervalTimer = setInterval(function() {
+         gpio22.set();
+         setTimeout(function() { gpio22.reset(); }, 500);
+      }, 1000);
+   }
 });
+
