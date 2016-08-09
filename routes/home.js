@@ -1,10 +1,8 @@
 'use strict'
 // const onOffModel = require("./models/onoff")
 const router = require('express').Router();
-
-/****
 const {turnOn} = require('./models/onoff')
-****/
+
 
 
 router.get('/', function(req,res) {
