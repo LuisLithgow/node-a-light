@@ -145,6 +145,7 @@ var Gpio = require('onoff').Gpio, // Constructor function for Gpio objects.
     return led.unexport();
   }
 
+// delete?
   led.read(function (err, value) { // Asynchronous read.
     if (err) {
       throw err;
