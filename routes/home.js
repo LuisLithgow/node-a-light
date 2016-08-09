@@ -8,7 +8,7 @@ router.get('/', function(req,res) {
 })
 
 router.get('/on', function(req,res) {
-
+  console.log("ht on route")
 } )
 
 module.exports = router;
