@@ -1,8 +1,8 @@
 'use strict'
 
 
-const five = require("johnny-five");
-const board = new five.Board();
+// const five = require("johnny-five");
+// const board = new five.Board();
 let led;
 const express = require('express');
 const app = express();
@@ -15,7 +15,7 @@ const request = require('request');
 const http = require("http");
 let io = require('socket.io');
 let fs = require('fs');
-let gpio = require("rpi-gpio")
+let gpio = require("pi-gpio")
 
 
 app.listen(PORT,()=>{
@@ -133,16 +133,11 @@ app.get('/off', function(req,res) {
 
 // ******FOR GPIO******
 
-var gpio = require("gpio");
-var gpio22, gpio4, intervalTimer;
+// var gpio = require("pi-gpio");
 
-// Flashing lights if LED connected to GPIO22
-gpio22 = gpio.export(22, {
-   ready: function() {
-      intervalTimer = setInterval(function() {
-         gpio22.set();
-         setTimeout(function() { gpio22.reset(); }, 500);
-      }, 1000);
-   }
+gpio.open(16, "output", function(err) {   // Open pin 16 for output
+    gpio.write(16, 1, function() {      // Set pin 16 high (1)
+        gpio.close(16);           // Close pin 16
+    });
 });
 
