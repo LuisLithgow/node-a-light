@@ -11,7 +11,6 @@ const logger = require('morgan');
 const PORT = process.env[2] || process.env.PORT || 3000 ;
 const homeRoute = require("./routes/home");
 const onOffRoute = require("./routes/onoff");
-const $ = require('jquerygo');
 const request = require('request');
 const http = require("http");
 let io = require('socket.io');
