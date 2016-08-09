@@ -135,7 +135,7 @@ app.get('/off', function(req,res) {
 // ******FOR GPIO******
 
 
-var Gpio = require('onoff').Gpio, // Constructor function for Gpio objects.
+var Gpio = require('onoff').Gpio; // Constructor function for Gpio objects.
   led = new Gpio(14, 'out');      // Export GPIO #14 as an output.
 
 // Toggle the state of the LED on GPIO #14 every 200ms 'count' times.
