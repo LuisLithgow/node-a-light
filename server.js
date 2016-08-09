@@ -15,7 +15,8 @@ const request = require('request');
 const http = require("http");
 let io = require('socket.io');
 let fs = require('fs');
-let gpio = require("pi-gpio")
+// let gpio = require("pi-gpio")
+let onoff = require("onoff")
 
 
 app.listen(PORT,()=>{
@@ -133,11 +134,30 @@ app.get('/off', function(req,res) {
 
 // ******FOR GPIO******
 
-// var gpio = require("pi-gpio");
 
-gpio.open(16, "output", function(err) {   // Open pin 16 for output
-    gpio.write(16, 1, function() {      // Set pin 16 high (1)
-        gpio.close(16);           // Close pin 16
+var Gpio = require('onoff').Gpio, // Constructor function for Gpio objects.
+  led = new Gpio(14, 'out');      // Export GPIO #14 as an output.
+
+// Toggle the state of the LED on GPIO #14 every 200ms 'count' times.
+// Here asynchronous methods are used. Synchronous methods are also available.
+(function blink(count) {
+  if (count <= 0) {
+    return led.unexport();
+  }
+
+  led.read(function (err, value) { // Asynchronous read.
+    if (err) {
+      throw err;
+    }
+
+    led.write(value ^ 1, function (err) { // Asynchronous write.
+      if (err) {
+        throw err;
+      }
     });
-});
+  });
 
+  setTimeout(function () {
+    blink(count - 1);
+  }, 200);
+}(25));
