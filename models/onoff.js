@@ -46,4 +46,4 @@ const gpio = require("rpi-gpio")
 //   }
 // }
 
-module.exports = turnOn
+module.exports = { turnOn }
