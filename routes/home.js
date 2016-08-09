@@ -1,7 +1,7 @@
 'use strict'
 // const onOffModel = require("./models/onoff")
 const router = require('express').Router();
-const { turnOn } = require('../models/onoff');
+const turnOn  = require('../models/onoff');
 
 
 
