@@ -1,25 +1,42 @@
 // 'use strict'
 
 
-
-let five = require("johnny-five");
-let board = new five.Board();
+const five = require("johnny-five");
+const board = new five.Board();
 let led;
-let express = require('express');
-let app = express();
-let path = require('path');
-let logger = require('morgan');
-let PORT = process.env[2] || process.env.PORT || 3000 ;
+const express = require('express');
+const app = express();
+const path = require('path');
+const logger = require('morgan');
+const PORT = process.env[2] || process.env.PORT || 3000 ;
+const homeRoute = require("./routes/home");
+const onOffRoute = require("./routes/onoff");
+const $ = require('jquerygo');
+const request = require('request');
+const http = require("http");
+let io = require('socket.io')
+let fs = require('fs')
+
 app.listen(PORT,()=>{
   console.log('sup from '+PORT);
 })
-
 // to-do: add views
 app.set('view engine','ejs');
 app.use(express.static(path.join(__dirname,'public')));
-
 app.use(logger('dev'));
 
+
+let state = false
+// SEtting homeRoute
+app.use('/', homeRoute);
+app.get('/on', function(req,res) {
+  console.log("Current state is " + state)
+  res.send(state = true)
+
+} );
+app.get('/off', function(req,res) {
+  state = false
+} );
 
 // Do we want the sequence to loop?
 let loop = true;
@@ -61,9 +78,12 @@ let demoSequence = [{
   method: "off"
 }];
 
-
+// $(".on").on("click",
+// if (state === true) {
+  console.log("will turn on")
 // Execute a method in the demo sequence
 function execute(step) {
+    console.log("clicked on")
 
   // Grab everything we need for this step
   let method = demoSequence[step].method;
@@ -78,6 +98,7 @@ function execute(step) {
 
   // Increment the step
   step++;
+
 
   // If we're at the end, start over (loop==true) or exit
   if (step === demoSequence.length) {
@@ -94,6 +115,8 @@ function execute(step) {
     execute(step);
   });
 }
+// )
+// ENd of click function
 
 board.on("ready", function() {
   // Defaults to pin 11 (must be PWM)
@@ -103,6 +126,10 @@ board.on("ready", function() {
   execute(0);
 });
 
+// } else {
+//   console.log(false)
+//   state = false
+// }
 
 
 
@@ -110,8 +137,16 @@ board.on("ready", function() {
 
 
 
-
-
+// http.createServer(function (req, resp) {
+//   if (req.url === '/') {
+//     if (req.method === 'PUT') {
+//       req.pipe(request.put('http://mysite.com/doodle.png'))
+//     } else if (req.method === 'GET' || req.method === 'HEAD') {
+//       request.get('http://mysite.com/doodle.png').pipe(resp)
+//     }
+//   }
+// }).listen(3000)
+// console.log("server started rewuest")
 
 
 
