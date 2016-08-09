@@ -14,8 +14,10 @@ const onOffRoute = require("./routes/onoff");
 const $ = require('jquerygo');
 const request = require('request');
 const http = require("http");
-let io = require('socket.io')
-let fs = require('fs')
+let io = require('socket.io');
+let fs = require('fs');
+let gpio = require("rpi-gpio")
+
 
 app.listen(PORT,()=>{
   console.log('sup from '+PORT);
