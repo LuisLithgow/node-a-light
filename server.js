@@ -82,7 +82,6 @@ let demoSequence = [{
 
 
 
-  console.log("will turn on")
 // Execute a method in the demo sequence
 function execute(step) {
     console.log("clicked on")

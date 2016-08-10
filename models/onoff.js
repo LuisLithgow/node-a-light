@@ -1,7 +1,6 @@
 module.exports = {
 
-  alertHit: function(req, res, next) {
-
+  hitOn: function(req, res, next) {
 
     let five = require("johnny-five");
     let board = new five.Board();
@@ -14,18 +13,6 @@ module.exports = {
       let ledStatus = "";
       var led = new five.Led(LEDPIN);
 
-      btn.on("hit", function(){
-        led.on();
-        counter++
-      });
-
-      btn.on("release", function(){
-        led.off();
-        let data = { 'grips': counter }
-        console.log(data)
-        res.counter = data;
-        next();
-      });
     });
   }
 }
