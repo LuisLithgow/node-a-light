@@ -7,8 +7,8 @@ router.get('/', function(req,res) {
   res.render('index');
 })
 
-router.get('/on', function(req,res) {
-  console.log("ht on route")
-} )
+// router.get('/onoff', function(req,res) {
+//   console.log("ht on route")
+// } )
 
 module.exports = router;
