@@ -33,7 +33,7 @@ board.on("ready", function() {
   app.get("/off", function(req, res) {
     led.off();
   });
-  app.listen(port, () => {
+  app.listen(port, function() {
     console.log(`http://${os.hostname()}:${port}`);
   });
 });
