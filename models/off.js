@@ -7,19 +7,11 @@ module.exports = {
     var board = new five.Board();
     var led = new five.Led(11);
 
-      // board.on("ready", function() {
-      //   led.pulse(400);
+      board.on("ready", function() {
+        board.stop().off();
 
-      //     board.wait(4000, function(){
-      //       led.stop();
-      //     });
+        });
 
-      //     board.repl.inject({
-      //       led: led
-      //     });
-      //   });
-
-      board.stop().off();
 
   }
 }
