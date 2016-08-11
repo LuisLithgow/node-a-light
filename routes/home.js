@@ -1,9 +1,9 @@
-'use strict'
+"use strict"
 
-const router = require('express').Router();
+const router = require("express").Router();
 
-router.get('/', function(req,res) {
-  res.render('index');
+router.get("/", function(req, res) {
+  res.render("index");
 });
 
 module.exports = router;
