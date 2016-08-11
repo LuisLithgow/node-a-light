@@ -7,17 +7,11 @@
     "ejs": "^2.5.1",
     "express": "^4.14.0",
     "fs": "0.0.2",
-    "gpio": "^0.2.7",
     "http": "0.0.0",
-    "jQuery": "^1.7.4",
     "johnny-five": "^0.9.62",
     "morgan": "^1.7.0",
-    "onoff": "^1.1.1",
-    "path": "^0.12.7",
-    "pi-gpio": "0.0.8",
-    "request": "^2.74.0",
-    "rpi-gpio": "^0.7.0",
-    "socket.io": "^1.4.8"
+    "os": "^0.1.1",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {
