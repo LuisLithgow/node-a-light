@@ -34,6 +34,6 @@ board.on("ready", function() {
     led.off();
   });
   app.listen(port, function() {
-    console.log(`http://${os.hostname()}:${port} this is the port listener`);
+    console.log(`http://${os.hostname()}:${port}`);
   });
 });
