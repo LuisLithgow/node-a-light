@@ -9,7 +9,7 @@ const five = require("johnny-five");
 const logger = require("morgan");
 
 const homeRoute = require("./routes/home");
-const onOffRoute = require("./routes/onoff");
+// const onOffRoute = require("./routes/onoff");
 
 const app = express();
 
@@ -22,18 +22,18 @@ const board = new five.Board();
 
 board.on("ready", function() {
 
-  const server = new Server(app);
-  const port = process.env.PORT || 3000;
+    const server = new Server(app);
+    const port = process.env.PORT || 3000;
 
-  const led = new five.Led(process.argv[2] || 11);
+    const led = new five.Led(process.argv[2] || 11);
 
-  app.get("/on", function(req, res) {
-    led.on();
-  });
-  app.get("/off", function(req, res) {
-    led.off();
-  });
-  app.listen(port, function() {
-    console.log(`http://${os.hostname()}:${port} this is the port listener`);
-  });
+    app.get("/on", function(req, res) {
+      led.on();
+    });
+    app.get("/off", function(req, res) {
+      led.off();
+    });
+    app.listen(port, function() {
+      console.log(`http://${os.hostname()}:${port} this is the port listener`);
+    });
 });
